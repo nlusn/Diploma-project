@@ -3,11 +3,10 @@
 Diploma project, Astana IT University, Software Engineering.
 
 Team:
-
- Sagi Alpyssov  
- Kuat Bereketov. 
+ 1) Alpyssov Sagi Serikovich.  
+ 2) Bereketov Kuat Kairatuly. 
  
- Supervisor: Marzhan Turganova.
+Supervisor: Turarova Marzhan Kabdykalievna.
 
 A mobile app that recognises a gym machine from a photo and returns usage guidance for
 it: target muscles, basic technique, machine setup, safety points and a suggested
