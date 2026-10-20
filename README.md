@@ -69,7 +69,7 @@ Artificial Intelligence
 |------|------|----------------|
 | Team member | Sagi Alpyssov | Literature review; recognition model and evaluation; backend and inference service in Python with FastAPI; SQLite database; architecture; technology comparison; repository and YouTrack setup |
 | Team member | Kuat Bereketov | UI/UX design and Figma prototype; mobile app in React Native with TypeScript; admin web panel in React; integration of the API with the clients and integration testing; analysis of existing apps; guidance content; usability testing |
-| Supervisor | Marzhan Turganova | Reviews key deliverables and pull requests |
+| Supervisor | Marzhan Turarova | Reviews key deliverables and pull requests |
 
 First names are used in the rest of this document.
 
