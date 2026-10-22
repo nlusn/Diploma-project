@@ -1,12 +1,8 @@
 # Application for Exercise Equipment Recognition and Usage Recommendations Based on Artificial Intelligence
 
-Diploma project, Astana IT University, Software Engineering.
-
-Team:
- 1) Alpyssov Sagi Serikovich.  
- 2) Bereketov Kuat Kairatuly. 
- 
-Supervisor: Turarova Marzhan Kabdykalievna.
+Diploma project, Astana IT University, Software Engineering. Team: Sagi Alpyssov and Kuat
+Bereketov. Supervisor: Marzhan Turarova.
+First pre-defense: 24 October 2026.
 
 A mobile app that recognises a gym machine from a photo and returns usage guidance for
 it: target muscles, basic technique, machine setup, safety points and a suggested
@@ -47,12 +43,12 @@ tests/           automated tests
   example `feature/DIP-12-short-name`, in each commit message, for example
   `[DIP-12] short message`, and in the pull request title.
 - Every change goes in through a pull request that the other member reviews.
-- Submitted versions are tagged throughout the development e.g., `pre-defense-1`, `defense-version-1` and so on.
+- Submitted versions are tagged: `prob-period-1`, and so on.
 
 ### License
 
 The repository is licensed under AGPL-3.0, the same licence as Ultralytics YOLO, which the
-recognition component uses.
+recognition component uses. See 1.12 and 5.6.
 
 ---
 
@@ -154,6 +150,8 @@ and started.
 - On-device inference. The first version runs the model on the server and needs a network
   connection. Offline use is future work.
 
+Some of these functions appear in the prototype, see 8.4.
+
 ### 1.8 Approach and planned technology
 
 | Part | Choice | Owner |
@@ -224,7 +222,7 @@ YouTrack.
 Literature review and relevance interviews are done. Existing systems, technology
 comparison, requirements, architecture diagrams, Figma prototype, verification plan and
 project plan are prepared for 24 October 2026, and this README is submitted with the tag
-`pre-defense-1`.
+`prob-period-1`.
 
 ---
 
@@ -839,7 +837,46 @@ Uploaded user photos are not stored, so there is no table for them.
 
 ## 8. UX and Prototype
 
----
+### 8.1 Prototype
+
+The prototype is made in Figma by Sagi. It uses the working name EquipScan. It has nine screens, and the numbers below follow the order of the frames. The button "Simulate no match" on the scan screen is only a prototype control that shows the unknown machine answer without a real model.
+
+### 8.2 Screens and requirements
+
+| # | Screen | What it shows | Requirements |
+|---|--------|---------------|--------------|
+| 1 | Scan | Camera view with a frame, the shutter button, a flashlight button and a hint to point the camera at a machine | FR1 |
+| 2 | Menu | Side menu with the scan, history, saved machines and settings entries | Future additions, 8.4 |
+| 3 | Equipment detected | Machine name, target muscles, a starting range of 3 sets and 10 to 12 repetitions, the buttons "See how to use it" and "Not this? Scan again" | FR2, FR3, FR5, FR6, FR10, NFR3 |
+| 4 | How to use it | Machine name, muscle tags, four numbered steps with the machine setup first, a box with what to avoid, a video placeholder | FR6, FR7, FR8, FR9, FR11 |
+| 5 | Scan history | List of earlier scans with search | Future additions, 8.4 |
+| 6 | Saved machines | Saved machines as cards with search | Future additions, 8.4 |
+| 7 | Settings | Profile, training goal, scanner options and privacy | Future additions, 8.4 |
+| 8 | Progress | Weekly workouts, sets, streak and personal bests | Future additions, 8.4 |
+| 9 | Machine not recognised | Message that no match was found, three tips, and the buttons "Try again", "Pick from list" and "Send to our team" | FR4, FR12 |
+
+### 8.3 Not yet in the prototype
+
+- Choosing a photo from the gallery, FR1.
+- The reference photo of the machine on the result card, FR5.
+- The notice that the guidance is not medical advice, FR9.
+- The source of each guidance entry, NFR7.
+- The messages for a lost connection and for an invalid photo, FR12.
+- The admin panel screens and the login, FR13 and FR14.
+
+### 8.4 Future additions
+
+The prototype shows several functions that are outside the first version, see the out of scope list in 1.7. They are kept in the design and are planned for later versions.
+
+- User account with a profile, and a login and logout.
+- Workout logging with the button "Log this workout", and the workouts and progress screens with streaks.
+- Weights in kilograms: logging the weight the user lifts, personal bests such as kilograms times repetitions, and a choice of kilograms or pounds. The first version gives no weight recommendation, FR10.
+- A starting plan based on the user's goal and experience level. The first version gives one general range for beginners.
+- Scan history and saved machines.
+- Likes and comments on a machine.
+- Form reminders during the sets.
+- Automatic scanning without pressing the shutter button, and saving scan photos in the history. Both need a privacy decision first, because the first version does not store uploaded photos, NFR4.
+- Choosing a machine from a list and sending an unrecognised machine to the team.
 
 ## 9. Verification Plan
 
@@ -902,7 +939,7 @@ Uploaded user photos are not stored, so there is no table for them.
 | Research and justification | 12 to 18 Oct 2026 | Interviews, literature review, existing apps, technology comparison | Both |
 | Definition | 14 to 20 Oct | Requirements, architecture diagrams, repository and YouTrack | Both |
 | Prototype and plans | 14 to 22 Oct | Figma prototype, verification plan, project plan, risk review | Kuat, Sagi |
-| Review and submission | 18 to 24 Oct | Meeting with the supervisor, corrections, tag `pre-defense-1` | Both |
+| Review and submission | 18 to 24 Oct | Meeting with the supervisor, corrections, tag `prob-period-1` | Both |
 | Data | after 24 Oct | Public datasets chosen, classes checked, real-gym test photos collected | Sagi |
 | Model | after 24 Oct | Trained model and baseline, threshold chosen | Sagi |
 | Backend | after 24 Oct | FastAPI service, SQLite and seed script, API contract | Sagi |
