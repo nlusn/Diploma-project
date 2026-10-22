@@ -1,7 +1,7 @@
 # Application for Exercise Equipment Recognition and Usage Recommendations Based on Artificial Intelligence
 
-Diploma project, Astana IT University, Software Engineering. Team: Sagi Alpyssov and Kuat
-Bereketov. Supervisor: Marzhan Turarova.
+Diploma project, Astana IT University, Software Engineering. Team: Alpyssov Sagi Serikovich and
+Bereketov Kuat Kairatuly. Supervisor: Turarova Marzhan Kabdykalievna.
 First pre-defense: 24 October 2026.
 
 A mobile app that recognises a gym machine from a photo and returns usage guidance for
