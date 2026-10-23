@@ -128,11 +128,10 @@ and started.
 ### 1.7 Scope
 
 **In scope, first version**
-- Recognition of a fixed list of popular gym machines from a single photo.
-  [ASSUMPTION: about 12 classes, such as leg press, lat pulldown, seated cable row, chest
-  press machine, pec deck, leg extension, seated leg curl, shoulder press machine, Smith
-  machine, cable crossover, hack squat and treadmill. The final list depends on the
-  datasets.]
+- Recognition of a fixed list of popular gym machines from a single photo. The planned list
+  has about 12 classes, such as leg press, lat pulldown, seated cable row, chest press
+  machine, pec deck, leg extension, seated leg curl, shoulder press machine, Smith machine,
+  cable crossover, hack squat and treadmill. The final list depends on the datasets.
 - Guidance per machine: a reference photo, target muscles, how to adjust the machine,
   short technique steps, safety points and a suggested starting set and repetition range
   for beginners. Step images or a short animation for the technique, if time allows.
@@ -184,9 +183,6 @@ not answer.
 
 ### 1.11 Preliminary success criteria
 
-[ASSUMPTION: these numbers are placeholders and will be set in the verification plan, after
-a baseline is measured.]
-
 - Top-1 accuracy of about 85% or higher on a held-out set of real-gym photos.
 - The app answers "unknown machine" instead of a wrong guess when confidence is low.
 - Time from photo to result of a few seconds on a normal connection.
@@ -194,9 +190,8 @@ a baseline is measured.]
 
 ### 1.12 Risks
 
-Likelihood L and impact I are rated Low, Medium or High. [ASSUMPTION: all ratings are our
-own estimates and not measured. We review them every week.] Each risk is also a label in
-YouTrack.
+Likelihood L and impact I are rated Low, Medium or High. We review them every week. Each
+risk is also a label in YouTrack.
 
 | ID | Risk | L | I | Owner | Mitigation | Warning sign and fallback |
 |----|------|---|---|-------|------------|---------------------------|
@@ -514,8 +509,7 @@ photos.
 ## 5. Technology Comparison
 
 This section justifies the stack in 1.8. Each decision compares the chosen technology with
-three alternatives. Anything about accuracy or speed on our own data is marked ASSUMPTION
-until we measure it, and the results go into the verification plan.
+three alternatives. The results on our own data go into the verification plan.
 
 ### 5.1 Recognition model
 
@@ -532,8 +526,7 @@ speed on a server and later on a phone; licence; support in the literature we re
 **Decision:** YOLO classification first, because it is the shortest path from a dataset to a
 working classifier. MobileNetV3 is trained as a baseline on the same split. The choice
 stays provisional: if MobileNetV3 or CLIP does better on the real-gym test set, or the
-licence becomes a problem, we switch. [ASSUMPTION: the baseline comparison is planned, not
-done.]
+licence becomes a problem, we switch.
 
 ### 5.2 Backend and inference
 
@@ -617,8 +610,7 @@ EfficientNet, see R5.
 
 ## 6. Requirements
 
-Each requirement becomes a task in the YouTrack project DIP. Numbers marked ASSUMPTION are
-placeholders until the verification plan fixes them.
+Each requirement becomes a task in the YouTrack project DIP.
 
 ### 6.1 Functional requirements
 
@@ -630,27 +622,27 @@ placeholders until the verification plan fixes them.
 | FR4 | The system answers "unknown machine" when confidence is below the threshold | Must | Photos of machines outside the list and of non-machines give the unknown answer in the test, and the rate is reported | 1.7, F3 |
 | FR5 | The result shows the machine name and a reference photo | Must | The card shows both for every class in the list | F3, F4 |
 | FR6 | The result shows the target muscles | Must | Every class has at least one primary muscle group | 1.5 |
-| FR7 | The result shows short technique steps | Must | Every class has steps, and each step is one short sentence [ASSUMPTION] | F4 |
+| FR7 | The result shows short technique steps | Must | Every class has steps, and each step is one short sentence | F4 |
 | FR8 | The result shows how to adjust the machine, such as seat and handles | Should | Every class has a setup entry, or a note that none applies | F2 |
 | FR9 | The result shows safety points and a general notice that it is not medical advice | Must | Every class has at least one safety point, and the notice is visible | R6, F11 |
 | FR10 | The result shows a suggested range of sets and repetitions for beginners, and no weight recommendation | Must | Every class has a range, and no weight appears anywhere in the app | 1.5, F12 |
 | FR11 | The result shows a technique demonstration, as step images or a short animation | Should | Every class has at least step images, and any media has a stated licence | F1, R15 |
 | FR12 | The app shows clear messages when the machine is not recognised, when the connection fails and when the photo is invalid | Must | Each case shows its own message in a test with a simulated failure | R8 |
-| FR13 | An administrator can add, edit and remove machine entries in the admin panel | Should | A change made in the panel appears in the app without restarting the backend [ASSUMPTION] | 1.7 |
+| FR13 | An administrator can add, edit and remove machine entries in the admin panel | Should | A change made in the panel appears in the app without restarting the backend | 1.7 |
 | FR14 | The admin panel requires a login | Must | Requests to the admin endpoints without a valid login are rejected | 1.7 |
 
 ### 6.2 Non-functional requirements
 
 | ID | Requirement | Priority | Acceptance criterion | Source |
 |----|-------------|----------|----------------------|--------|
-| NFR1 | Speed | Must | From sending the photo to showing the result takes at most 5 seconds for 90% of requests on a normal connection [ASSUMPTION: values] | F5, 1.11 |
+| NFR1 | Speed | Must | From sending the photo to showing the result takes at most 5 seconds for 90% of requests on a normal connection | F5, 1.11 |
 | NFR2 | No ads and no payment for the main features | Must | The app contains neither | F5 |
 | NFR3 | Short result screen | Should | Name and muscles are visible without scrolling on two test phones | F4 |
 | NFR4 | Privacy | Must | Uploaded photos are not written to disk by default, checked in the code and the logs | R10 |
-| NFR5 | Several users at once | Should | 10 parallel requests complete without errors [ASSUMPTION] | 7.3 |
+| NFR5 | Several users at once | Should | 10 parallel requests complete without errors | 7.3 |
 | NFR6 | Reproducible setup | Must | A fresh machine follows the README steps and gets a working backend with the database | R9 |
 | NFR7 | Sourced content | Must | Every guidance entry links to at least one cited source | R6 |
-| NFR8 | Platforms | Must | The app runs on at least one Android and one iOS device [ASSUMPTION] | 1.7 |
+| NFR8 | Platforms | Must | The app runs on at least one Android and one iOS device | 1.7 |
 
 ---
 
@@ -891,14 +883,14 @@ The prototype shows several functions that are outside the first version, see th
   how often the system wrongly gives a machine name.
 - Threshold: chosen on validation data, never on the test set.
 - Baseline: MobileNetV3 trained on the same split, see section 5.1.
-- Target: about 85% top-1 on the real-gym test set [ASSUMPTION].
+- Target: about 85% top-1 on the real-gym test set.
 
 ### 9.2 Backend and integration tests, Sagi and Kuat
 
 - API tests for `/recognize` and the admin endpoints: valid photo, invalid file, empty
   request, timeout, wrong login.
 - Integration tests: the mobile app and the admin panel against a running backend.
-- Load check: 10 parallel requests complete without errors, NFR5 [ASSUMPTION].
+- Load check: 10 parallel requests complete without errors, NFR5.
 - Reproducibility: a fresh checkout is set up using only the README steps, NFR6.
 
 ### 9.3 Content checks, Kuat
@@ -908,7 +900,7 @@ The prototype shows several functions that are outside the first version, see th
 
 ### 9.4 Usability, Kuat
 
-- SUS questionnaire with at least 5 participants [ASSUMPTION]. The number of participants is
+- SUS questionnaire with at least 5 participants. The number of participants is
   stated in the results, and the score is reported against a published benchmark.
 - Task success: the participant takes a photo and finds the muscles, one technique step and
   the safety point.
