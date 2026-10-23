@@ -26,11 +26,11 @@ starting set and repetition range.
 
 ```
 README.md        this file: all components
+prototype_design/ Folder containing link to Figma project 
 backend/         FastAPI service and SQLite seed script
 training/        model training and evaluation scripts
 mobile/          React Native app, Expo, TypeScript
 admin/           admin web panel, React
-docs/diagrams/   diagram sources and exported images
 docs/design/     exported Figma screens
 tests/           automated tests
 .gitignore
