@@ -38,11 +38,11 @@ tests/           automated tests
 
 ### Working rules
 
-- One repository. Each member commits from their own account.
+- One repository.
 - Every task has a YouTrack ID from the project DIP. It appears in the branch name, for
   example `feature/DIP-12-short-name`, in each commit message, for example
   `[DIP-12] short message`, and in the pull request title.
-- Every change goes in through a pull request that the other member reviews.
+- Every change goes in through a pull request.
 - Submitted versions are tagged: `prob-period-1`, and so on.
 
 ### License
@@ -63,14 +63,10 @@ Artificial Intelligence
 
 | Role | Name | Responsibility |
 |------|------|----------------|
-| Team member | Sagi Alpyssov | Literature review; recognition model and evaluation; backend and inference service in Python with FastAPI; SQLite database; architecture; technology comparison; repository and YouTrack setup |
-| Team member | Kuat Bereketov | UI/UX design and Figma prototype; mobile app in React Native with TypeScript; admin web panel in React; integration of the API with the clients and integration testing; analysis of existing apps; guidance content; usability testing |
+| Student | Sagi Alpyssov | All work: literature review; interviews; analysis of existing apps; requirements; architecture and diagrams; technology comparison; recognition model and evaluation; backend and inference service in Python with FastAPI; SQLite database; guidance content; UI/UX design and Figma prototype; mobile app in React Native with TypeScript; admin web panel in React; testing and usability check; repository and YouTrack setup |
 | Supervisor | Marzhan Turarova | Reviews key deliverables and pull requests |
 
-First names are used in the rest of this document.
-
-Shared: proposal, requirements, interviews, risk list, and the API contract between the
-app and the backend. Each member reviews the other's pull requests.
+All work in this project was done by Sagi Alpyssov. Kuat Bereketov is named in the title as the second member of the team.
 
 ### 1.3 Problem
 
@@ -112,14 +108,14 @@ gyms.
 
 | # | Objective | Result at the end of the objective | Owner |
 |---|-----------|------------------------------------|-------|
-| 1 | Review the literature and existing apps | Literature review, comparison of existing systems | Sagi: literature; Kuat: apps |
-| 2 | Check the need with real users | Notes from 3 to 5 conversations, findings separated from assumptions | Both |
-| 3 | Define requirements | Functional and non-functional requirements with acceptance criteria | Both |
-| 4 | Design the system | Context, use case and component diagrams, data model | Sagi; Kuat for the use case diagram |
+| 1 | Review the literature and existing apps | Literature review, comparison of existing systems | Sagi |
+| 2 | Check the need with real users | Notes from the conversations and the findings drawn from them | Sagi |
+| 3 | Define requirements | Functional and non-functional requirements with acceptance criteria | Sagi |
+| 4 | Design the system | Context, use case and component diagrams, data model | Sagi |
 | 5 | Build the recognition component | A model that classifies the machine classes, with a confidence threshold and an "unknown machine" answer | Sagi |
-| 6 | Build the guidance content | A knowledge base with the guidance for each machine class, written from cited sources | Kuat |
-| 7 | Build the app and admin panel | A mobile prototype where the user takes or chooses a photo and sees the result and guidance, and an admin web panel for the machine entries | Kuat: screens and panel; Sagi: API |
-| 8 | Evaluate | Accuracy on a separate set of real-gym photos, integration tests, and a usability check with SUS | Sagi: accuracy; Kuat: usability and integration tests |
+| 6 | Build the guidance content | A knowledge base with the guidance for each machine class, written from cited sources | Sagi |
+| 7 | Build the app and admin panel | A mobile prototype where the user takes or chooses a photo and sees the result and guidance, and an admin web panel for the machine entries | Sagi |
+| 8 | Evaluate | Accuracy on a separate set of real-gym photos, integration tests, and a usability check with SUS | Sagi |
 
 For the first pre-defense on 24 October 2026 the deliverables are objectives 1 to 4, the
 Figma prototype, the verification plan and the project plan. Objectives 5 to 8 are planned
@@ -128,11 +124,11 @@ and started.
 ### 1.7 Scope
 
 **In scope, first version**
-- Recognition of a fixed list of popular gym machines from a single photo.
-  [ASSUMPTION: about 12 classes, such as leg press, lat pulldown, seated cable row, chest
-  press machine, pec deck, leg extension, seated leg curl, shoulder press machine, Smith
-  machine, cable crossover, hack squat and treadmill. The final list depends on the
-  datasets.]
+- Recognition of a fixed list of popular gym machines from a single photo. The planned list
+  has about 12 classes, such as leg press, lat pulldown, seated cable row, chest press
+  machine, pec deck, leg extension, seated leg curl, shoulder press machine, Smith machine,
+  cable crossover, hack squat and treadmill. The final list is fixed after the datasets are
+  checked.
 - Guidance per machine: a reference photo, target muscles, how to adjust the machine,
   short technique steps, safety points and a suggested starting set and repetition range
   for beginners. Step images or a short animation for the technique, if time allows.
@@ -159,9 +155,9 @@ Some of these functions appear in the prototype, see 8.4.
 | Recognition | YOLO from Ultralytics in classification mode, trained on public datasets from Kaggle and Roboflow, with our own real-gym photos for testing. Alternatives compared in section 5: fine-tuned MobileNetV3, CLIP, EfficientNet or ResNet | Sagi |
 | Backend and inference | Python with FastAPI: one service that loads the trained model, classifies the photo and returns the machine guidance as a REST API. Alternatives compared in section 5: Flask, Node.js with ONNX Runtime, on-device inference | Sagi |
 | Database | SQLite for the machine knowledge base and optional scan history, accessed through SQLAlchemy so it can be replaced with PostgreSQL. Alternatives compared in section 5: PostgreSQL, MongoDB, Firebase Firestore | Sagi |
-| Mobile app | React Native with Expo in TypeScript. Alternatives compared in section 5: Flutter, native Android with Kotlin, web app | Kuat |
-| Admin panel | React web app | Kuat |
-| Design and prototype | Figma | Kuat |
+| Mobile app | React Native with Expo in TypeScript. Alternatives compared in section 5: Flutter, native Android with Kotlin, web app | Sagi |
+| Admin panel | React web app | Sagi |
+| Design and prototype | Figma | Sagi |
 
 The project uses two languages: Python for the model and backend, and TypeScript for the
 mobile app and the admin panel. The database is a single SQLite file filled by a seed
@@ -184,8 +180,7 @@ not answer.
 
 ### 1.11 Preliminary success criteria
 
-[ASSUMPTION: these numbers are placeholders and will be set in the verification plan, after
-a baseline is measured.]
+These are the targets for the final version. They are confirmed after a baseline is measured.
 
 - Top-1 accuracy of about 85% or higher on a held-out set of real-gym photos.
 - The app answers "unknown machine" instead of a wrong guess when confidence is low.
@@ -194,9 +189,8 @@ a baseline is measured.]
 
 ### 1.12 Risks
 
-Likelihood L and impact I are rated Low, Medium or High. [ASSUMPTION: all ratings are our
-own estimates and not measured. We review them every week.] Each risk is also a label in
-YouTrack.
+Likelihood L and impact I are rated Low, Medium or High. We review them every week. Each
+risk is also a label in YouTrack.
 
 | ID | Risk | L | I | Owner | Mitigation | Warning sign and fallback |
 |----|------|---|---|-------|------------|---------------------------|
@@ -205,17 +199,17 @@ YouTrack.
 | R3 | Photos from real gyms differ from the training data in lighting, angle and crowding | H | H | Sagi | Keep a separate real-gym test set from the start, split by gym and not randomly | Accuracy on the real-gym set is much lower than on the public set: collect more real-gym photos and retrain |
 | R4 | Evaluation looks better than it is because similar photos are in the training and test sets | M | H | Sagi | Split by gym or session; never tune on the test set; report the setup in the verification plan | Test accuracy is suspiciously high: check the split for overlap |
 | R5 | Licensing of the model library, Ultralytics AGPL-3.0 | M | M | Sagi | The repository uses AGPL-3.0, the same licence; do not copy Ultralytics code into the repository; keep the alternative models from the comparison | A need to distribute the app under other terms: switch to MobileNetV3 or EfficientNet |
-| R6 | The guidance is wrong or unsafe and a user follows it | M | H | Kuat | Write every guidance entry from cited sources; state that it is not medical advice; ask the supervisor or a qualified trainer to review the content; do not recommend weights | A source is missing for an entry: remove the entry until it has one |
-| R7 | The interviews do not confirm the problem, or we cannot find enough people | M | H | Both | Keep findings and assumptions separate, section 2; interview one more beginner if possible | Not enough support: tell the supervisor and keep the claim in 1.3 weak |
+| R6 | The guidance is wrong or unsafe and a user follows it | M | H | Sagi | Write every guidance entry from cited sources; state that it is not medical advice; ask the supervisor or a qualified trainer to review the content; do not recommend weights | A source is missing for an entry: remove the entry until it has one |
+| R7 | The interviews do not confirm the problem, or we cannot find enough people | M | H | Sagi | Report only what the participants said, section 2; interview one more beginner if possible | Not enough support: tell the supervisor and keep the claim in 1.3 weak |
 | R8 | Server-side inference needs a connection, which may be weak inside a gym | M | M | Sagi | Compress the photo before upload; show a clear offline message; on-device inference is listed as future work | Response time on gym wifi is too long: shrink the image further or cache results |
 | R9 | The SQLite file is lost if the host resets its disk | L | L | Sagi | Rebuild the database from a seed script at start-up; keep the knowledge base in the repository | Database empty after a restart: run the seed script |
-| R10 | Photos may show other people in the gym, a privacy risk | M | M | Both | Do not store uploaded photos by default; take test photos without faces or with consent; keep the dataset out of public view if it contains people | A photo shows an identifiable person: delete it |
-| R11 | One member is unavailable or the workload is uneven | M | M | Both | Documented split of work; each member reviews the other's pull requests so both know the whole project; weekly check on progress in YouTrack | A task is late for a week: move it or reduce the scope |
-| R12 | Kuat's workload is high: design, mobile app, admin panel, content and tests | M | M | Kuat | Do the admin panel last; if it is late, the content stays in the seed script; Sagi helps with the API contract and tests | The mobile app is not working by the agreed date: move the admin panel to the next stage |
-| R13 | Scope grows, for example accounts, history, more machines or starting weights | M | M | Both | Keep to 1.7; write new ideas under future work, not into the plan | A task is not in 1.7: do not start it |
-| R14 | Not enough time before 24 October | H | M | Both | Pre-defense 1 is documents and the prototype; the model is planned for the next stage; order of work follows 1.13 | A component is not started by 20 October: tell the supervisor |
-| R15 | Technique images or videos may be copyrighted | M | M | Kuat | Use our own photos or drawings, or openly licensed material; record the licence in the database | Licence unclear: do not use the item |
-| R16 | The interview sample is small and not representative | H | M | Both | State the limits in 2.7; do not claim more than the interviews show | A decision depends on one interview only: check it again in the usability test |
+| R10 | Photos may show other people in the gym, a privacy risk | M | M | Sagi | Do not store uploaded photos by default; take test photos without faces or with consent; keep the dataset out of public view if it contains people | A photo shows an identifiable person: delete it |
+| R11 | The only developer is unavailable or ill | M | M | Sagi | Documented plan; weekly check on progress in YouTrack; reduce the scope according to 1.7 | A task is late for a week: move it or reduce the scope |
+| R12 | The workload is high: model, backend, design, mobile app, admin panel, content and tests | M | M | Sagi | Do the admin panel last; if it is late, the content stays in the seed script | The mobile app is not working by the agreed date: move the admin panel to the next stage |
+| R13 | Scope grows, for example accounts, history, more machines or starting weights | M | M | Sagi | Keep to 1.7; write new ideas under future work, not into the plan | A task is not in 1.7: do not start it |
+| R14 | Not enough time before 24 October | H | M | Sagi | Pre-defense 1 is documents and the prototype; the model is planned for the next stage; order of work follows 1.13 | A component is not started by 20 October: tell the supervisor |
+| R15 | Technique images or videos may be copyrighted | M | M | Sagi | Use our own photos or drawings, or openly licensed material; record the licence in the database | Licence unclear: do not use the item |
+| R16 | The interview sample is small and not representative | H | M | Sagi | State the limits in 2.7; do not claim more than the interviews show | A decision depends on one interview only: check it again in the usability test |
 
 ### 1.13 Plan for pre-defense 1
 
@@ -276,38 +270,38 @@ findings are indications, not proof.
 
 | Claim from the proposal | What participants said | Result |
 |-------------------------|------------------------|--------|
-| C1. Beginners can be unsure what a machine trains or how to use it | P2 was unsure how to adjust the seat and where to put the hands, has skipped machines and later found their technique was probably wrong. P3 relies on the sign and a family member, and watched videos to improve technique. P1 has no gym experience. P4 is a coach. | Partly confirmed |
-| C2. They currently search, ask someone or skip the machine | P2: YouTube or Google, sometimes asks an experienced person, has skipped machines. P3: the sign, a family member, YouTube, Instagram trainers. P4: asks other coaches. P1 said what they would do: YouTube or a manual online. | Confirmed |
-| C3. A trainer is not always available or affordable | P2 has not paid for a trainer, is saving money, and says trainers can be expensive. P3 had free help from a family member. P1 does not feel the need. | Partly confirmed, only P2 gives cost as a reason |
-| C4. They would use a photo-based app | P2 and P3: yes. P1: not regularly, but would consider it at an unfamiliar machine. P4 did not say whether he would use it. | Confirmed by the two gym-goers, conditionally by P1 |
-| C5. They would trust short guidance from such an app | P1 and P2 would not trust it if it identified the wrong machine. P1 also if it contradicted the safety text on the machine. P2 also if everyone got the same advice. P3 would stop trusting it after an injury. P4 would trust it if he felt the muscle. | Conditional: trust depends on correct recognition and safe, consistent advice |
+| Beginners can be unsure what a machine trains or how to use it | P2 was unsure how to adjust the seat and where to put the hands, has skipped machines and later found their technique was probably wrong. P3 relies on the sign and a family member, and watched videos to improve technique. P1 has no gym experience. P4 is a coach. | Partly confirmed |
+| They currently search, ask someone or skip the machine | P2: YouTube or Google, sometimes asks an experienced person, has skipped machines. P3: the sign, a family member, YouTube, Instagram trainers. P4: asks other coaches. P1 said what they would do: YouTube or a manual online. | Confirmed |
+| A trainer is not always available or affordable | P2 has not paid for a trainer, is saving money, and says trainers can be expensive. P3 had free help from a family member. P1 does not feel the need. | Partly confirmed, only P2 gives cost as a reason |
+| They would use a photo-based app | P2 and P3: yes. P1: not regularly, but would consider it at an unfamiliar machine. P4 did not say whether he would use it. | Confirmed by the two gym-goers, conditionally by P1 |
+| They would trust short guidance from such an app | P1 and P2 would not trust it if it identified the wrong machine. P1 also if it contradicted the safety text on the machine. P2 also if everyone got the same advice. P3 would stop trusting it after an injury. P4 would trust it if he felt the muscle. | Conditional: trust depends on correct recognition and safe, consistent advice |
 
 Findings that were not in the proposal:
 
-| # | Finding | Who |
-|---|---------|-----|
-| F1 | Wants to see the technique demonstrated, in a video or a short demonstration, not only text | P1, P2, P3, P4 |
-| F2 | Wants guidance on how to adjust the machine, such as seat height and handle position | P1, P2 |
-| F3 | A wrong machine name breaks trust most; not knowing the name also makes searching hard | P1, P2, P3 |
-| F4 | Wants short information, not long text, with the name and muscles first | P1, P2, P3 |
-| F5 | The app should be fast, with no ads and no paywall for basic features | P1, P2, P3 |
-| F6 | Sources contradict each other and it is hard to tell which are reliable | P1, P2 |
-| F7 | Would stop using the app once the technique is learned | P3, P4 |
-| F8 | Wants a warm-up plan for the muscle group of the machine | P3 |
-| F9 | Wants to save learned machines and build a routine | P2 |
-| F10 | Asking other people can feel embarrassing, and an app could give confidence | P2 |
-| F11 | The coach wants a list of cases where a machine should not be used, such as scoliosis or diastasis recti | P4 |
-| F12 | Wants a recommended starting weight | P2 |
+| Finding | Who |
+|---------|-----|
+| Wants to see the technique demonstrated, in a video or a short demonstration, not only text | P1, P2, P3, P4 |
+| Wants guidance on how to adjust the machine, such as seat height and handle position | P1, P2 |
+| A wrong machine name breaks trust most; not knowing the name also makes searching hard | P1, P2, P3 |
+| Wants short information, not long text, with the name and muscles first | P1, P2, P3 |
+| The app should be fast, with no ads and no paywall for basic features | P1, P2, P3 |
+| Sources contradict each other and it is hard to tell which are reliable | P1, P2 |
+| Would stop using the app once the technique is learned | P3, P4 |
+| Wants a warm-up plan for the muscle group of the machine | P3 |
+| Wants to save learned machines and build a routine | P2 |
+| Asking other people can feel embarrassing, and an app could give confidence | P2 |
+| The coach wants a list of cases where a machine should not be used, such as scoliosis or diastasis recti | P4 |
+| Wants a recommended starting weight | P2 |
 
 ### 2.6 What changes in the project
 
-1. **Result screen.** The order is machine name and reference photo, target muscles, short steps, safety points, then sets and repetitions. The photo lets the user check that the machine was recognised correctly. Findings F3 and F4.
-2. **Machine setup field.** Seat, handles and adjustments are added to the knowledge base and the requirements. Finding F2.
-3. **Technique demonstration.** Step images or a short animation for each machine, and short videos only if time allows. This adds content work and a licensing check, R15. Finding F1.
-4. **Safety notices.** A general notice and a short "ask a professional if" list reviewed by a qualified trainer. It stays general and is not medical advice. Findings F11 and F6.
-5. **Future work.** Warm-up plans, F8, saved machines and routines, F9, personalised advice, and starting weight, F12. We do not recommend weights because a wrong number is a safety risk.
-6. **Non-functional requirements.** Fast answer, no ads, and basic features free. Finding F5. Payments stay out of scope.
-7. **Verification plan.** P3 and P4 would stop using the app once they know the technique, F7, so low long-term use is not a failure. We measure task success and SUS, and read usage over time carefully.
+1. **Result screen.** The order is machine name and reference photo, target muscles, short steps, safety points, then sets and repetitions. The photo lets the user check that the machine was recognised correctly.
+2. **Machine setup field.** Seat, handles and adjustments are added to the knowledge base and the requirements.
+3. **Technique demonstration.** Step images or a short animation for each machine, and short videos only if time allows. This adds content work and a licensing check.
+4. **Safety notices.** A general notice and a short "ask a professional if" list reviewed by a qualified trainer. It stays general and is not medical advice.
+5. **Future work.** Warm-up plans, saved machines and routines, personalised advice, and starting weight. We do not recommend weights because a wrong number is a safety risk.
+6. **Non-functional requirements.** Fast answer, no ads, and basic features free. Payments stay out of scope.
+7. **Verification plan.** P3 and P4 would stop using the app once they know the technique, so low long-term use is not a failure. We measure task success and SUS, and read usage over time carefully.
 8. **Users.** The coach, P4, supports keeping trainers as secondary users.
 
 ### 2.7 Limits of these interviews
@@ -461,7 +455,7 @@ includes five apps in two groups and one open-source project.
   compare its approach with ours.
 
 Apps for other purposes, such as calorie or macro tracking, were left out because they do
-not help someone use a machine. The apps were assessed by the team in October 2026. Not
+not help someone use a machine. The apps were assessed by Sagi in October 2026. Not
 noted means that nothing was recorded for that point.
 
 ### 4.2 Criteria
@@ -471,7 +465,7 @@ noted means that nothing was recorded for that point.
 3. Has an AI assistant.
 4. Gives technique analysis or feedback.
 5. Offers workout plans, tracking or statistics.
-6. Design and ease of use, as the team's own impression.
+6. Design and ease of use, as Sagi's own impression.
 
 ### 4.3 Comparison
 
@@ -501,7 +495,7 @@ photos.
   assistant in GymScan and technique analysis in LiftLens. The secondary apps, JEFIT and
   Invictus, offer exercise instructions and tracking, but they start from an exercise or a
   plan and not from a photo, so a person who does not know the machine's name has no
-  starting point. Two interviewees described this problem, finding F3 in section 2.
+  starting point. Interviewees described this problem, see section 2.
 - Our project is meant to differ in one app for Android and iOS, guidance written from
   cited sources with a safety notice, an "unknown machine" answer when the model is unsure,
   and accuracy measured on real-gym photos split by gym. These are design goals, not
@@ -514,8 +508,8 @@ photos.
 ## 5. Technology Comparison
 
 This section justifies the stack in 1.8. Each decision compares the chosen technology with
-three alternatives. Anything about accuracy or speed on our own data is marked ASSUMPTION
-until we measure it, and the results go into the verification plan.
+three alternatives. Accuracy and speed on our own data are not known until we measure them,
+and the results go into the verification plan.
 
 ### 5.1 Recognition model
 
@@ -532,8 +526,7 @@ speed on a server and later on a phone; licence; support in the literature we re
 **Decision:** YOLO classification first, because it is the shortest path from a dataset to a
 working classifier. MobileNetV3 is trained as a baseline on the same split. The choice
 stays provisional: if MobileNetV3 or CLIP does better on the real-gym test set, or the
-licence becomes a problem, we switch. [ASSUMPTION: the baseline comparison is planned, not
-done.]
+licence becomes a problem, we switch.
 
 ### 5.2 Backend and inference
 
@@ -553,17 +546,16 @@ removes the export-and-compare step that the Node.js option needs.
 ### 5.3 Mobile app
 
 Criteria: Android and iOS from one codebase; camera and photo access; setup effort; skills
-of the team member who builds the screens; fit with the Figma design.
+of the developer; fit with the Figma design.
 
 | Option | Strengths | Weaknesses |
 |--------|-----------|------------|
-| **React Native with Expo and TypeScript**, chosen | One codebase for Android and iOS; Expo lets us run the app on a phone while developing without setting up native tools; a typed API contract with the backend; shares ideas with React, which Kuat also uses for the admin panel | Needs some care to match the native look of each platform |
+| **React Native with Expo and TypeScript**, chosen | One codebase for Android and iOS; Expo lets us run the app on a phone while developing without setting up native tools; a typed API contract with the backend; shares ideas with React, which is also used for the admin panel | Needs some care to match the native look of each platform |
 | Flutter | Own widget toolkit with close control over the UI, so it matches a Figma design well | Dart would be a third language in the project |
 | Native Android with Kotlin | Best access to the device | Android only, while the scope in 1.7 says Android and iOS |
 | Web app | No install needed | Not an installable store app, which the scope in 1.7 asks for, and less integrated with the phone |
 
-**Decision:** React Native with Expo in TypeScript, confirmed with Kuat, who builds the
-mobile app. TypeScript was chosen over JavaScript because the typed response from the
+**Decision:** React Native with Expo in TypeScript. TypeScript was chosen over JavaScript because the typed response from the
 backend catches mismatches between the app and the API early. The admin panel is a React
 web app.
 
@@ -600,7 +592,7 @@ resets.
 Ultralytics YOLO is released under AGPL-3.0. The repository is licensed under AGPL-3.0 as
 well, so the licences match. We do not copy Ultralytics code into the repository. If the
 app ever needs to be distributed under other terms, the fallback is MobileNetV3 or
-EfficientNet, see R5.
+EfficientNet, see the licensing risk in 1.12.
 
 ### 5.7 Official documentation
 
@@ -617,8 +609,7 @@ EfficientNet, see R5.
 
 ## 6. Requirements
 
-Each requirement becomes a task in the YouTrack project DIP. Numbers marked ASSUMPTION are
-placeholders until the verification plan fixes them.
+Each requirement becomes a task in the YouTrack project DIP.
 
 ### 6.1 Functional requirements
 
@@ -627,37 +618,36 @@ placeholders until the verification plan fixes them.
 | FR1 | The user can take a photo or choose one from the gallery | Must | On Android and iOS both options give an image that is sent to the backend | 1.5 |
 | FR2 | The app sends the photo to the backend and shows the result | Must | A valid photo returns a result screen within the time in NFR1 | 1.5 |
 | FR3 | The system recognises the machine from the fixed class list | Must | Top-1 accuracy on the real-gym test set is measured and reported. Target in 1.11 | 1.5, 1.11 |
-| FR4 | The system answers "unknown machine" when confidence is below the threshold | Must | Photos of machines outside the list and of non-machines give the unknown answer in the test, and the rate is reported | 1.7, F3 |
-| FR5 | The result shows the machine name and a reference photo | Must | The card shows both for every class in the list | F3, F4 |
+| FR4 | The system answers "unknown machine" when confidence is below the threshold | Must | Photos of machines outside the list and of non-machines give the unknown answer in the test, and the rate is reported | 1.7, 2.6 |
+| FR5 | The result shows the machine name and a reference photo | Must | The card shows both for every class in the list | 2.6 |
 | FR6 | The result shows the target muscles | Must | Every class has at least one primary muscle group | 1.5 |
-| FR7 | The result shows short technique steps | Must | Every class has steps, and each step is one short sentence [ASSUMPTION] | F4 |
-| FR8 | The result shows how to adjust the machine, such as seat and handles | Should | Every class has a setup entry, or a note that none applies | F2 |
-| FR9 | The result shows safety points and a general notice that it is not medical advice | Must | Every class has at least one safety point, and the notice is visible | R6, F11 |
-| FR10 | The result shows a suggested range of sets and repetitions for beginners, and no weight recommendation | Must | Every class has a range, and no weight appears anywhere in the app | 1.5, F12 |
-| FR11 | The result shows a technique demonstration, as step images or a short animation | Should | Every class has at least step images, and any media has a stated licence | F1, R15 |
-| FR12 | The app shows clear messages when the machine is not recognised, when the connection fails and when the photo is invalid | Must | Each case shows its own message in a test with a simulated failure | R8 |
-| FR13 | An administrator can add, edit and remove machine entries in the admin panel | Should | A change made in the panel appears in the app without restarting the backend [ASSUMPTION] | 1.7 |
+| FR7 | The result shows short technique steps | Must | Every class has steps, and each step is one short sentence | 2.6 |
+| FR8 | The result shows how to adjust the machine, such as seat and handles | Should | Every class has a setup entry, or a note that none applies | 2.6 |
+| FR9 | The result shows safety points and a general notice that it is not medical advice | Must | Every class has at least one safety point, and the notice is visible | 1.12, 2.6 |
+| FR10 | The result shows a suggested range of sets and repetitions for beginners, and no weight recommendation | Must | Every class has a range, and no weight appears anywhere in the app | 1.5, 2.6 |
+| FR11 | The result shows a technique demonstration, as step images or a short animation | Should | Every class has at least step images, and any media has a stated licence | 2.6, 1.12 |
+| FR12 | The app shows clear messages when the machine is not recognised, when the connection fails and when the photo is invalid | Must | Each case shows its own message in a test with a simulated failure | 1.12 |
+| FR13 | An administrator can add, edit and remove machine entries in the admin panel | Should | A change made in the panel appears in the app without restarting the backend | 1.7 |
 | FR14 | The admin panel requires a login | Must | Requests to the admin endpoints without a valid login are rejected | 1.7 |
 
 ### 6.2 Non-functional requirements
 
 | ID | Requirement | Priority | Acceptance criterion | Source |
 |----|-------------|----------|----------------------|--------|
-| NFR1 | Speed | Must | From sending the photo to showing the result takes at most 5 seconds for 90% of requests on a normal connection [ASSUMPTION: values] | F5, 1.11 |
-| NFR2 | No ads and no payment for the main features | Must | The app contains neither | F5 |
-| NFR3 | Short result screen | Should | Name and muscles are visible without scrolling on two test phones | F4 |
-| NFR4 | Privacy | Must | Uploaded photos are not written to disk by default, checked in the code and the logs | R10 |
-| NFR5 | Several users at once | Should | 10 parallel requests complete without errors [ASSUMPTION] | 7.3 |
-| NFR6 | Reproducible setup | Must | A fresh machine follows the README steps and gets a working backend with the database | R9 |
-| NFR7 | Sourced content | Must | Every guidance entry links to at least one cited source | R6 |
-| NFR8 | Platforms | Must | The app runs on at least one Android and one iOS device [ASSUMPTION] | 1.7 |
+| NFR1 | Speed | Must | From sending the photo to showing the result takes at most 5 seconds for 90% of requests on a normal connection | 2.6, 1.11 |
+| NFR2 | No ads and no payment for the main features | Must | The app contains neither | 2.6 |
+| NFR3 | Short result screen | Should | Name and muscles are visible without scrolling on two test phones | 2.6 |
+| NFR4 | Privacy | Must | Uploaded photos are not written to disk by default, checked in the code and the logs | 1.12 |
+| NFR5 | Several users at once | Should | 10 parallel requests complete without errors | 7.3 |
+| NFR6 | Reproducible setup | Must | A fresh machine follows the README steps and gets a working backend with the database | 1.12 |
+| NFR7 | Sourced content | Must | Every guidance entry links to at least one cited source | 1.12 |
+| NFR8 | Platforms | Must | The app runs on at least one Android and one iOS device | 1.7 |
 
 ---
 
 ## 7. Architecture and Diagrams
 
-Names of endpoints and tables are working names until the API contract is agreed by Sagi
-Alpyssov and Kuat Bereketov.
+Names of endpoints and tables are working names until the API contract is fixed.
 
 ### 7.1 Context diagram
 
@@ -704,17 +694,17 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    subgraph CLIENTS["Clients, Kuat Bereketov"]
+    subgraph CLIENTS["Clients"]
         MOB["Mobile app<br/>React Native, TypeScript"]
         ADM["Admin web panel<br/>React"]
     end
-    subgraph SERVER["Server, Sagi Alpyssov"]
+    subgraph SERVER["Server"]
         API["REST API<br/>FastAPI"]
         MOD["Recognition model<br/>YOLO classifier"]
         DB[("SQLite")]
         SEED["Seed script"]
     end
-    subgraph OFFLINE["Offline, Sagi Alpyssov"]
+    subgraph OFFLINE["Offline"]
         DATA["Datasets"]
         TRAIN["Training scripts<br/>Python"]
     end
@@ -884,31 +874,31 @@ The prototype shows several functions that are outside the first version, see th
 
 - Data: public datasets from Kaggle and Roboflow for training and validation, plus our own
   real-gym photos used only for the final test. The licence of each dataset is checked
-  before it is used. The split is by gym or session, not random. R3, R4.
+  before it is used. The split is by gym or session, not random.
 - Metrics: top-1 accuracy, confusion matrix, precision and recall per class, and response
   time of the service.
 - Unknown-machine test: photos of machines outside the list and of non-machines. We report
   how often the system wrongly gives a machine name.
 - Threshold: chosen on validation data, never on the test set.
 - Baseline: MobileNetV3 trained on the same split, see section 5.1.
-- Target: about 85% top-1 on the real-gym test set [ASSUMPTION].
+- Target: about 85% top-1 on the real-gym test set.
 
-### 9.2 Backend and integration tests, Sagi and Kuat
+### 9.2 Backend and integration tests, Sagi
 
 - API tests for `/recognize` and the admin endpoints: valid photo, invalid file, empty
   request, timeout, wrong login.
 - Integration tests: the mobile app and the admin panel against a running backend.
-- Load check: 10 parallel requests complete without errors, NFR5 [ASSUMPTION].
+- Load check: 10 parallel requests complete without errors, NFR5.
 - Reproducibility: a fresh checkout is set up using only the README steps, NFR6.
 
-### 9.3 Content checks, Kuat
+### 9.3 Content checks, Sagi
 
-- Every guidance entry has a cited source, NFR7, and its media has a licence, R15.
-- A qualified trainer or the supervisor reviews the safety points, R6.
+- Every guidance entry has a cited source, NFR7, and its media has a licence.
+- A qualified trainer or the supervisor reviews the safety points.
 
-### 9.4 Usability, Kuat
+### 9.4 Usability, Sagi
 
-- SUS questionnaire with at least 5 participants [ASSUMPTION]. The number of participants is
+- SUS questionnaire with at least 5 participants. The number of participants is
   stated in the results, and the score is reported against a published benchmark.
 - Task success: the participant takes a photo and finds the muscles, one technique step and
   the safety point.
@@ -918,15 +908,15 @@ The prototype shows several functions that are outside the first version, see th
 
 | Requirement | How it is checked | Who |
 |-------------|-------------------|-----|
-| FR1, FR2, FR12 | Manual test on Android and iOS; integration tests with simulated failures | Kuat |
+| FR1, FR2, FR12 | Manual test on Android and iOS; integration tests with simulated failures | Sagi |
 | FR3, FR4 | Model evaluation, 9.1 | Sagi |
-| FR5 to FR11 | Content checks, 9.3, and a screen review against the prototype | Kuat |
-| FR13, FR14 | Admin API tests and a manual test of the panel | Kuat, Sagi |
+| FR5 to FR11 | Content checks, 9.3, and a screen review against the prototype | Sagi |
+| FR13, FR14 | Admin API tests and a manual test of the panel | Sagi |
 | NFR1, NFR5 | Timing and load check, 9.2 | Sagi |
-| NFR2, NFR3, NFR8 | Manual review on two phones | Kuat |
+| NFR2, NFR3, NFR8 | Manual review on two phones | Sagi |
 | NFR4 | Code review and log check | Sagi |
 | NFR6 | Fresh-checkout test | Sagi |
-| NFR7 | Content checks, 9.3 | Kuat |
+| NFR7 | Content checks, 9.3 | Sagi |
 
 ---
 
@@ -936,17 +926,17 @@ The prototype shows several functions that are outside the first version, see th
 
 | Stage | Dates | Result | Owner |
 |-------|-------|--------|-------|
-| Research and justification | 12 to 18 Oct 2026 | Interviews, literature review, existing apps, technology comparison | Both |
-| Definition | 14 to 20 Oct | Requirements, architecture diagrams, repository and YouTrack | Both |
-| Prototype and plans | 14 to 22 Oct | Figma prototype, verification plan, project plan, risk review | Kuat, Sagi |
-| Review and submission | 18 to 24 Oct | Meeting with the supervisor, corrections, tag `prob-period-1` | Both |
+| Research and justification | 12 to 18 Oct 2026 | Interviews, literature review, existing apps, technology comparison | Sagi |
+| Definition | 14 to 20 Oct | Requirements, architecture diagrams, repository and YouTrack | Sagi |
+| Prototype and plans | 14 to 22 Oct | Figma prototype, verification plan, project plan, risk review | Sagi |
+| Review and submission | 18 to 24 Oct | Meeting with the supervisor, corrections, tag `prob-period-1` | Sagi |
 | Data | after 24 Oct | Public datasets chosen, classes checked, real-gym test photos collected | Sagi |
 | Model | after 24 Oct | Trained model and baseline, threshold chosen | Sagi |
 | Backend | after 24 Oct | FastAPI service, SQLite and seed script, API contract | Sagi |
-| Content | after 24 Oct | Guidance entries with sources and media | Kuat |
-| Apps | after 24 Oct | Mobile app, then admin panel, integrated with the API | Kuat; Sagi for the API |
-| Evaluation | after 24 Oct | Accuracy on real-gym photos, tests, SUS | Both |
-| Final report and defense | after 24 Oct | Report and demonstration | Both |
+| Content | after 24 Oct | Guidance entries with sources and media | Sagi |
+| Apps | after 24 Oct | Mobile app, then admin panel, integrated with the API | Sagi |
+| Evaluation | after 24 Oct | Accuracy on real-gym photos, tests, SUS | Sagi |
+| Final report and defense | after 24 Oct | Report and demonstration | Sagi |
 
 The stages after 24 October are in order, but their dates are not fixed yet.
 
@@ -957,7 +947,7 @@ The stages after 24 October are in order, but their dates are not fixed yet.
 - Branches, commits and pull requests follow the working rules at the top of this file.
 - Meetings with the supervisor take place once every two weeks.
 - Once a week we review the risk table in 1.12 and update it.
-- Each member's contribution is shown by their commits, pull requests and closed tasks.
+- The work is shown by the commits, pull requests and closed tasks.
 
 ---
 
