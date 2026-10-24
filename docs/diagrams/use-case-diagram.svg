@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="580" viewBox="0 0 900 580" font-family="Arial, Helvetica, sans-serif" font-size="15">
+<rect width="900" height="580" fill="#ffffff"/>
+<rect x="255" y="20" width="390" height="540" fill="none" stroke="#000" stroke-width="1.5"/>
+<text x="450" y="46" text-anchor="middle" font-weight="bold">Gym machine recognition system</text>
+<line x1="117" y1="193" x2="285" y2="90" stroke="#000" stroke-width="1.2"/>
+<line x1="117" y1="193" x2="285" y2="148" stroke="#000" stroke-width="1.2"/>
+<line x1="117" y1="193" x2="285" y2="206" stroke="#000" stroke-width="1.2"/>
+<line x1="117" y1="193" x2="285" y2="264" stroke="#000" stroke-width="1.2"/>
+<line x1="117" y1="193" x2="285" y2="322" stroke="#000" stroke-width="1.2"/>
+<line x1="783" y1="448" x2="615" y2="400" stroke="#000" stroke-width="1.2"/>
+<line x1="783" y1="448" x2="615" y2="458" stroke="#000" stroke-width="1.2"/>
+<line x1="783" y1="448" x2="615" y2="516" stroke="#000" stroke-width="1.2"/>
+<ellipse cx="450" cy="90" rx="165" ry="27" fill="#ffffff" stroke="#000" stroke-width="1.5"/>
+<text x="450" y="95" text-anchor="middle">Take or choose a photo</text>
+<ellipse cx="450" cy="148" rx="165" ry="27" fill="#ffffff" stroke="#000" stroke-width="1.5"/>
+<text x="450" y="153" text-anchor="middle">Get recognition result</text>
+<ellipse cx="450" cy="206" rx="165" ry="27" fill="#ffffff" stroke="#000" stroke-width="1.5"/>
+<text x="450" y="211" text-anchor="middle">View machine card</text>
+<ellipse cx="450" cy="264" rx="165" ry="27" fill="#ffffff" stroke="#000" stroke-width="1.5"/>
+<text x="450" y="269" text-anchor="middle">See not recognised message</text>
+<ellipse cx="450" cy="322" rx="165" ry="27" fill="#ffffff" stroke="#000" stroke-width="1.5"/>
+<text x="450" y="327" text-anchor="middle">See connection error</text>
+<ellipse cx="450" cy="400" rx="165" ry="27" fill="#ffffff" stroke="#000" stroke-width="1.5"/>
+<text x="450" y="405" text-anchor="middle">Log in to admin panel</text>
+<ellipse cx="450" cy="458" rx="165" ry="27" fill="#ffffff" stroke="#000" stroke-width="1.5"/>
+<text x="450" y="463" text-anchor="middle">Manage machine entries</text>
+<ellipse cx="450" cy="516" rx="165" ry="27" fill="#ffffff" stroke="#000" stroke-width="1.5"/>
+<text x="450" y="521" text-anchor="middle">Edit guidance and sources</text>
+<circle cx="95" cy="167" r="13" fill="none" stroke="#000" stroke-width="1.5"/>
+<line x1="95" y1="180" x2="95" y2="220" stroke="#000" stroke-width="1.5"/>
+<line x1="73" y1="193" x2="117" y2="193" stroke="#000" stroke-width="1.5"/>
+<line x1="95" y1="220" x2="79" y2="247" stroke="#000" stroke-width="1.5"/>
+<line x1="95" y1="220" x2="111" y2="247" stroke="#000" stroke-width="1.5"/>
+<text x="95" y="269" text-anchor="middle">User</text>
+<circle cx="805" cy="422" r="13" fill="none" stroke="#000" stroke-width="1.5"/>
+<line x1="805" y1="435" x2="805" y2="475" stroke="#000" stroke-width="1.5"/>
+<line x1="783" y1="448" x2="827" y2="448" stroke="#000" stroke-width="1.5"/>
+<line x1="805" y1="475" x2="789" y2="502" stroke="#000" stroke-width="1.5"/>
+<line x1="805" y1="475" x2="821" y2="502" stroke="#000" stroke-width="1.5"/>
+<text x="805" y="524" text-anchor="middle">Administrator</text>
+</svg>

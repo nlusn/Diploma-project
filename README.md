@@ -671,29 +671,7 @@ flowchart LR
 
 ### 7.2 Use case diagram
 
-```mermaid
-flowchart LR
-    U(["User"])
-    A(["Administrator"])
-    subgraph SYS["System"]
-        UC1["Take or choose a photo"]
-        UC2["Get recognition result"]
-        UC3["View machine card"]
-        UC4["See not recognised message"]
-        UC5["See connection error"]
-        UC6["Log in to admin panel"]
-        UC7["Manage machine entries"]
-        UC8["Edit guidance and sources"]
-    end
-    U --- UC1
-    U --- UC2
-    U --- UC3
-    U --- UC4
-    U --- UC5
-    A --- UC6
-    A --- UC7
-    A --- UC8
-```
+![Use case diagram: the user and the administrator and their use cases](docs/diagrams/use-case-diagram.svg)
 
 ### 7.3 Component diagram
 
