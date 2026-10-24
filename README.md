@@ -814,6 +814,20 @@ Uploaded user photos are not stored, so there is no table for them.
 
 The prototype is made in Figma by Sagi. It uses the working name EquipScan. It has nine screens, and the numbers below follow the order of the frames. The button "Simulate no match" on the scan screen is only a prototype control that shows the unknown machine answer without a real model.
 
+The exported screens are in `docs/design/`, numbered as in the table in 8.2.
+
+<p>
+<img src="docs/design/01-scan.png" width="150" alt="1 Scan">
+<img src="docs/design/02-menu.png" width="150" alt="2 Menu">
+<img src="docs/design/03-equipment-detected.png" width="150" alt="3 Equipment detected">
+<img src="docs/design/04-how-to-use-it.png" width="150" alt="4 How to use it">
+<img src="docs/design/05-scan-history.png" width="150" alt="5 Scan history">
+<img src="docs/design/06-saved-machines.png" width="150" alt="6 Saved machines">
+<img src="docs/design/07-settings.png" width="150" alt="7 Settings">
+<img src="docs/design/08-progress.png" width="150" alt="8 Progress">
+<img src="docs/design/09-not-recognised.png" width="150" alt="9 Machine not recognised">
+</p>
+
 ### 8.2 Screens and requirements
 
 | # | Screen | What it shows | Requirements |
