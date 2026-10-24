@@ -25,16 +25,19 @@ starting set and repetition range.
 ## Repository
 
 ```
-README.md        this file: all components
-prototype_design/ Folder containing link to Figma project 
-backend/         FastAPI service and SQLite seed script
-training/        model training and evaluation scripts
-mobile/          React Native app, Expo, TypeScript
-admin/           admin web panel, React
-docs/design/     exported Figma screens
-tests/           automated tests
+README.md          this file: all components
+LICENSE            AGPL-3.0
+prototype_design/  link to the Figma prototype
+backend/           FastAPI service and SQLite seed script (next stage)
+training/          model training and evaluation scripts (next stage)
+mobile/            React Native app, Expo, TypeScript (next stage)
+tests/             automated tests (next stage)
+docs/              diagrams and other documentation
 .gitignore
 ```
+
+Each folder has its own README that says what it will contain. The admin web panel gets its
+own folder, `admin/`, when that work starts.
 
 ### Working rules
 
@@ -63,8 +66,8 @@ Artificial Intelligence
 
 | Role | Name | Responsibility |
 |------|------|----------------|
-| Team member | Sagi Alpyssov | Literature review; recognition model and evaluation; backend and inference service in Python with FastAPI; SQLite database; architecture; technology comparison; repository and YouTrack setup |
-| Team member | Kuat Bereketov | UI/UX design and Figma prototype; mobile app in React Native with TypeScript; admin web panel in React; integration of the API with the clients and integration testing; analysis of existing apps; guidance content; usability testing |
+| Team member | Sagi Alpyssov | Literature review; analysis of existing apps; recognition model and evaluation; backend and inference service in Python with FastAPI; SQLite database; architecture; technology comparison; UI/UX design and Figma prototype; repository and YouTrack setup |
+| Team member | Kuat Bereketov | Mobile app in React Native with TypeScript; admin web panel in React; integration of the API with the clients and integration testing; guidance content; usability testing |
 | Supervisor | Marzhan Turarova | Reviews key deliverables and pull requests |
 
 First names are used in the rest of this document.
@@ -112,7 +115,7 @@ gyms.
 
 | # | Objective | Result at the end of the objective | Owner |
 |---|-----------|------------------------------------|-------|
-| 1 | Review the literature and existing apps | Literature review, comparison of existing systems | Sagi: literature; Kuat: apps |
+| 1 | Review the literature and existing apps | Literature review, comparison of existing systems | Sagi |
 | 2 | Check the need with real users | Notes from 3 to 5 conversations, findings separated from assumptions | Both |
 | 3 | Define requirements | Functional and non-functional requirements with acceptance criteria | Both |
 | 4 | Design the system | Context, use case and component diagrams, data model | Sagi; Kuat for the use case diagram |
@@ -160,7 +163,7 @@ Some of these functions appear in the prototype, see 8.4.
 | Database | SQLite for the machine knowledge base and optional scan history, accessed through SQLAlchemy so it can be replaced with PostgreSQL. Alternatives compared in section 5: PostgreSQL, MongoDB, Firebase Firestore | Sagi |
 | Mobile app | React Native with Expo in TypeScript. Alternatives compared in section 5: Flutter, native Android with Kotlin, web app | Kuat |
 | Admin panel | React web app | Kuat |
-| Design and prototype | Figma | Kuat |
+| Design and prototype | Figma | Sagi |
 
 The project uses two languages: Python for the model and backend, and TypeScript for the
 mobile app and the admin panel. The database is a single SQLite file filled by a seed
@@ -206,7 +209,7 @@ risk is also a label in YouTrack.
 | R9 | The SQLite file is lost if the host resets its disk | L | L | Sagi | Rebuild the database from a seed script at start-up; keep the knowledge base in the repository | Database empty after a restart: run the seed script |
 | R10 | Photos may show other people in the gym, a privacy risk | M | M | Both | Do not store uploaded photos by default; take test photos without faces or with consent; keep the dataset out of public view if it contains people | A photo shows an identifiable person: delete it |
 | R11 | One member is unavailable or the workload is uneven | M | M | Both | Documented split of work; each member reviews the other's pull requests so both know the whole project; weekly check on progress in YouTrack | A task is late for a week: move it or reduce the scope |
-| R12 | Kuat's workload is high: design, mobile app, admin panel, content and tests | M | M | Kuat | Do the admin panel last; if it is late, the content stays in the seed script; Sagi helps with the API contract and tests | The mobile app is not working by the agreed date: move the admin panel to the next stage |
+| R12 | Kuat's workload is high: mobile app, admin panel, content and tests | M | M | Kuat | Do the admin panel last; if it is late, the content stays in the seed script; Sagi helps with the API contract and tests | The mobile app is not working by the agreed date: move the admin panel to the next stage |
 | R13 | Scope grows, for example accounts, history, more machines or starting weights | M | M | Both | Keep to 1.7; write new ideas under future work, not into the plan | A task is not in 1.7: do not start it |
 | R14 | Not enough time before 24 October | H | M | Both | Pre-defense 1 is documents and the prototype; the model is planned for the next stage; order of work follows 1.13 | A component is not started by 20 October: tell the supervisor |
 | R15 | Technique images or videos may be copyrighted | M | M | Kuat | Use our own photos or drawings, or openly licensed material; record the licence in the database | Licence unclear: do not use the item |
