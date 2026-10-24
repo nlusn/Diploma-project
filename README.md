@@ -954,3 +954,18 @@ The stages after 24 October are in order, but their dates are not fixed yet.
 ---
 
 ## 11. Supervisor Feedback
+
+### 11.1 Supervision record
+
+| Item | Details |
+|------|---------|
+| Project | Application for Exercise Equipment Recognition and Usage Recommendations Based on Artificial Intelligence |
+| Supervisor | Turarova Marzhan Kabdykalievna |
+| Students | Alpyssov Sagi Serikovich, Bereketov Kuat Kairatuly |
+
+### 11.2 Feedback of the supervisor
+
+The supervisor reviewed the work presented for the first pre-defense and gave the following assessment:
+
+> Accepted. Work is in progress.
+
