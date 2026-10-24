@@ -1,0 +1,10 @@
+flowchart LR
+    U["User, gym-goer"]
+    A["Administrator"]
+    S["Gym machine recognition system"]
+    D["Training data: public datasets and our own gym photos"]
+    U -- "photo" --> S
+    S -- "machine card or unknown machine" --> U
+    A -- "machine entries and guidance" --> S
+    S -- "stored content" --> A
+    D -. "used offline to train the model" .-> S

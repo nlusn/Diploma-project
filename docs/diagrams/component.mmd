@@ -1,0 +1,22 @@
+flowchart LR
+    subgraph CLIENTS["Clients, Kuat Bereketov"]
+        MOB["Mobile app<br/>React Native, TypeScript"]
+        ADM["Admin web panel<br/>React"]
+    end
+    subgraph SERVER["Server, Sagi Alpyssov"]
+        API["REST API<br/>FastAPI"]
+        MOD["Recognition model<br/>YOLO classifier"]
+        DB[("SQLite")]
+        SEED["Seed script"]
+    end
+    subgraph OFFLINE["Offline, Sagi Alpyssov"]
+        DATA["Datasets"]
+        TRAIN["Training scripts<br/>Python"]
+    end
+    MOB -- "HTTPS, JSON" --> API
+    ADM -- "HTTPS, JSON" --> API
+    API --> MOD
+    API <--> DB
+    SEED --> DB
+    DATA --> TRAIN
+    TRAIN -- "trained weights" --> MOD

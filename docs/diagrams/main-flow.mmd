@@ -1,0 +1,32 @@
+flowchart TD
+    subgraph APP["Mobile app, React Native"]
+        A1["User takes or picks a photo"]
+        A2["Compress photo"]
+        A3["Send POST /recognize"]
+        A9["Show machine card: muscles, technique, safety, sets and reps"]
+        A10["Show Machine not recognised screen"]
+        A11["Show No connection message"]
+    end
+
+    subgraph API["Backend, FastAPI, Python"]
+        B1["Validate request: file type and size"]
+        B2["Pre-process image: resize and normalise"]
+        B3["YOLO classifier predicts class and confidence"]
+        B4{"Confidence at or above threshold?"}
+        B5["Look up machine guidance by class"]
+        B6["Return JSON: machine, confidence, guidance"]
+        B7["Return JSON: status unknown"]
+        B8["Return error code: invalid file"]
+    end
+
+    DB[("SQLite: machines, muscles, technique, safety, sets and reps")]
+
+    A1 --> A2 --> A3
+    A3 -- "no connection or timeout" --> A11
+    A3 --> B1
+    B1 -- "invalid" --> B8 --> A11
+    B1 -- "valid" --> B2 --> B3 --> B4
+    B4 -- "yes" --> B5
+    B5 <--> DB
+    B5 --> B6 --> A9
+    B4 -- "no" --> B7 --> A10

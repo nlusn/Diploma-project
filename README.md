@@ -53,6 +53,19 @@ own folder, `admin/`, when that work starts.
 The repository is licensed under AGPL-3.0, the same licence as Ultralytics YOLO, which the
 recognition component uses. See 1.12 and 5.6.
 
+### Links
+
+- Figma prototype: https://www.figma.com/design/Nm5nIECB8NL3yLkK7YVpiA/Prototype-Design?node-id=0-1
+- Exported prototype screens: https://github.com/nlusn/Diploma-project/tree/prob-period-1/docs/design
+- Editable diagram sources (Mermaid, can be opened in https://mermaid.live):
+  - Context diagram: https://github.com/nlusn/Diploma-project/blob/prob-period-1/docs/diagrams/context.mmd
+  - Component diagram: https://github.com/nlusn/Diploma-project/blob/prob-period-1/docs/diagrams/component.mmd
+  - Main flow: https://github.com/nlusn/Diploma-project/blob/prob-period-1/docs/diagrams/main-flow.mmd
+  - Data model: https://github.com/nlusn/Diploma-project/blob/prob-period-1/docs/diagrams/data-model.mmd
+- Use case diagram (SVG, editable in any vector editor): https://github.com/nlusn/Diploma-project/blob/prob-period-1/docs/diagrams/use-case-diagram.svg
+- Repository at this version, tag `prob-period-1`: https://github.com/nlusn/Diploma-project/tree/prob-period-1
+- YouTrack project DIP (tasks and board): https://diploma-project.youtrack.cloud/projects/DIP
+
 ---
 
 ## 1. Project Proposal
@@ -652,7 +665,8 @@ Each requirement becomes a task in the YouTrack project DIP.
 ## 7. Architecture and Diagrams
 
 Names of endpoints and tables are working names until the API contract is agreed by Sagi
-Alpyssov and Kuat Bereketov.
+Alpyssov and Kuat Bereketov. The editable source of every diagram is in `docs/diagrams/`, see Links
+at the top of this file.
 
 ### 7.1 Context diagram
 
@@ -813,6 +827,8 @@ Uploaded user photos are not stored, so there is no table for them.
 ### 8.1 Prototype
 
 The prototype is made in Figma by Sagi. It uses the working name EquipScan. It has nine screens, and the numbers below follow the order of the frames. The button "Simulate no match" on the scan screen is only a prototype control that shows the unknown machine answer without a real model.
+
+Figma file: https://www.figma.com/design/Nm5nIECB8NL3yLkK7YVpiA/Prototype-Design?node-id=0-1
 
 The exported screens are in `docs/design/`, numbered as in the table in 8.2.
 

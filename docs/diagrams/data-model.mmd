@@ -1,0 +1,54 @@
+erDiagram
+    MACHINE ||--o{ MACHINE_MUSCLE : trains
+    MUSCLE ||--o{ MACHINE_MUSCLE : "is trained by"
+    MACHINE ||--o{ STEP : has
+    MACHINE ||--o{ SAFETY_POINT : has
+    MACHINE ||--|| REPS_RANGE : suggests
+    MACHINE ||--o{ MEDIA : shows
+    MACHINE ||--o{ SOURCE : "is based on"
+    MACHINE {
+        int id PK
+        string name
+        string class_label
+        string reference_photo
+    }
+    MUSCLE {
+        int id PK
+        string name
+    }
+    MACHINE_MUSCLE {
+        int machine_id FK
+        int muscle_id FK
+        string role
+    }
+    STEP {
+        int id PK
+        int machine_id FK
+        int position
+        string kind
+        string text
+    }
+    SAFETY_POINT {
+        int id PK
+        int machine_id FK
+        string text
+    }
+    REPS_RANGE {
+        int machine_id FK
+        int sets_min
+        int sets_max
+        int reps_min
+        int reps_max
+    }
+    MEDIA {
+        int id PK
+        int machine_id FK
+        string type
+        string path
+        string licence
+    }
+    SOURCE {
+        int id PK
+        int machine_id FK
+        string citation
+    }
